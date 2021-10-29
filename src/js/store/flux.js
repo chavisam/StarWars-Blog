@@ -1,20 +1,14 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			//we create the variable to login
+			isLoggedIn: false
 		},
 		actions: {
+			//LOGIN
+			login: _bool => setStore({ isLoggedIn: true }),
+			// LOGOUT
+			logout: _bool => setStore({ isLoggedIn: false }),
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

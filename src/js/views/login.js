@@ -1,20 +1,19 @@
 import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "../../styles/home.scss";
 
-export const Home = () => {
+export const Login = () => {
 	const { actions, store } = useContext(Context);
-
 	return (
 		<div>
+			<h1>Login View</h1>
 			{store.isLoggedIn ? (
-				<div>
-					<h1>This is the Dashboard</h1>
-					<button onClick={() => actions.logout()}>LogOut</button>
-				</div>
+				<Redirect to={"/home"} />
 			) : (
-				<Redirect to={"/"} />
+				<div>
+					<p>You are not logged in. Please, do it before see the Star Wars Blog</p>
+					<button onClick={() => actions.login()}>Fake login</button>
+				</div>
 			)}
 		</div>
 	);
