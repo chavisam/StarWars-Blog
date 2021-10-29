@@ -4,7 +4,7 @@ const getState = ({ setStore }) => {
 			//we create the variable to login
 			isLoggedIn: false,
 			//we create the variable for favorites
-			favorite: 0,
+			favorites: 0,
 			//we create variable Characters
 			characters: []
 		},
@@ -20,10 +20,12 @@ const getState = ({ setStore }) => {
 					.then(response => {
 						console.log(response.ok);
 						console.log(response.status);
-						console.log(response);
 						return response.json();
 					})
-					.then(data => setStore({ characters: data }))
+					.then(data => {
+						setStore({ characters: data });
+						console.log(data);
+					})
 					.catch(error => console.error(error));
 			}
 
