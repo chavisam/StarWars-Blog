@@ -5,19 +5,23 @@ export const Card = () => {
 	const { actions, store } = useContext(Context);
 
 	return (
-		<div>
-			{store.characters != [] ? (
-				store.characters.map((item, index) => {
+		<div className="row">
+			{store.characters != {} ? (
+				store.characters.results.map((item, index) => {
 					return (
-						<div key={index} classNameName="card" style="width: 18rem;">
-							<img src="..." classNameName="card-img-top" alt="..." />
-							<div classNameName="card-body">
-								<h5 classNameName="card-title">{item.result.name}</h5>
-								<p classNameName="card-text">
-									Some quick example text to build on the card title and make up the bulk of the
-									content.
+						<div key={index} className="card col-auto mx-auto m-4">
+							<img
+								src="http://lorempixel.com/200/200/people/"
+								className="characters card-img-top"
+								alt="..."
+							/>
+							<div className="card-body">
+								<h5 className="card-title">{item.name}</h5>
+								<p className="card-text">
+									<h6>Eye Color: {item.eye_color}</h6>
+									<h6>Eye Color: {item.hair_color}</h6>
 								</p>
-								<a href="#" classNameName="btn btn-primary">
+								<a href="#" className="btn btn-primary">
 									Go somewhere
 								</a>
 							</div>

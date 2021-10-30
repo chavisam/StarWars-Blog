@@ -18,10 +18,9 @@ export const Home = () => {
 					<div className="row">
 						<h1 className="text-center">Characters</h1>
 					</div>
-					<div className="row">
-						{/* ADDING CARDS */}
-						<Card />
-					</div>
+
+					{/* ADDING CARDS */}
+					<Card />
 				</div>
 			) : (
 				<Redirect to={"/"} />

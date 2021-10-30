@@ -6,7 +6,7 @@ const getState = ({ setStore }) => {
 			//we create the variable for favorites
 			favorites: 0,
 			//we create variable Characters
-			characters: []
+			characters: {}
 		},
 		actions: {
 			//LOGIN
@@ -16,7 +16,7 @@ const getState = ({ setStore }) => {
 
 			//we use the starwars API
 			loadCharacters: () => {
-				fetch("https://www.swapi.tech/api/people/1")
+				fetch("https://www.swapi.tech/api/people/")
 					.then(response => {
 						console.log(response.ok);
 						console.log(response.status);
@@ -28,21 +28,6 @@ const getState = ({ setStore }) => {
 					})
 					.catch(error => console.error(error));
 			}
-
-			//	changeColor: (index, color) => {
-			//get the store
-			//const store = getStore();
-
-			//we have to loop the entire demo array to look for the respective index
-			//and change its color
-			// const demo = store.demo.map((elm, i) => {
-			// 	if (i === index) elm.background = color;
-			// 	return elm;
-			// });
-
-			//reset the global store
-			//setStore({ login: false });
-			//}
 		}
 	};
 };
