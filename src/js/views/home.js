@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
@@ -6,10 +6,6 @@ import { Card } from "../component/cards";
 
 export const Home = () => {
 	const { actions, store } = useContext(Context);
-
-	useEffect(() => {
-		actions.loadCharacters();
-	}, []);
 
 	return (
 		<div>

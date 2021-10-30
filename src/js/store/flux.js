@@ -1,4 +1,4 @@
-const getState = ({ setStore }) => {
+const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			//we create the variable to login

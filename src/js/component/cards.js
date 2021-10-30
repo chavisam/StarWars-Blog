@@ -22,7 +22,7 @@ export const Card = () => {
 									<h6>Eye Color: {item.hair_color}</h6>
 								</p>
 								<a href="#" className="btn btn-primary">
-									Go somewhere
+									Más info
 								</a>
 							</div>
 						</div>
