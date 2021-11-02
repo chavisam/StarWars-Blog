@@ -28,6 +28,14 @@ export const Navbar = () => {
 					<Link to="/demo">
 						<button className="btn btn-primary ml-3">Favorites</button>
 					</Link>
+					<div className="favorites">
+						{store.favorites.map((favorite, index) => (
+							<div key={index}>
+								<span>{favorite.name}</span>
+								<span onClick={() => removeFav(index)}>delete </span>
+							</div>
+						))}
+					</div>
 				</span>
 			</div>
 		</nav>

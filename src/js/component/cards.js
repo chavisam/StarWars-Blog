@@ -4,6 +4,10 @@ import { Context } from "../store/appContext";
 export const Card = () => {
 	const { actions, store } = useContext(Context);
 
+	const addToFavorite = item => {
+		actions.addToFavorite(item);
+	};
+
 	return (
 		<div className="row">
 			{store.characters != {} ? (
@@ -24,7 +28,7 @@ export const Card = () => {
 								<a href="#" className="btn btn-primary">
 									Más info
 								</a>
-								<button>
+								<button onClick={() => addToFavorite(item)}>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="16"
