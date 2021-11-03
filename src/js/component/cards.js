@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import no_dispo from "./../../img/nodispo.jpg";
 
 export const Card = props => {
 	const { actions, store } = useContext(Context);
@@ -11,26 +12,33 @@ export const Card = props => {
 	}, []);
 
 	return (
-		<div className="row scroll">
+		<div className="scroll">
 			{store[props.type_info].length > 0 ? (
 				store[props.type_info].map((item, index) => {
 					return (
-						<div key={index} className="card col-auto mx-auto m-4">
-							<img
-								// THIS IS THE LOREMPIXEL!!!!!!
-								src="http://lorempixel.com/200/200/people/"
-								className="characters card-img-top"
-								alt="..."
-							/>
+						<div key={index} className="card">
+							<div className="row">
+								<div className="col-auto mx-auto">
+									<img
+										src={`https://starwars-visualguide.com/assets/img/${
+											props.type_info == "people" ? "characters" : props.type_info
+										}/${item.uid}.jpg`}
+										onError={e => {
+											e.target.src = no_dispo;
+										}}
+										className="characters card-img-top mx-auto"
+										alt="..."
+									/>
+								</div>
+							</div>
 							<div className="card-body">
-								<h5 className="card-title">{item.name}</h5>
-								<p className="card-text">....</p>
+								<h5 className="card-title text-danger">{item.name}</h5>
 
 								<button
-									className="btn btn-primary"
+									className="btn btn-primary mb-2"
 									onClick={() => actions.getCharacterData(item.uid, props.type_info)}>
 									<Link to={"/info/" + index + 1}>
-										<span className="text-warning">Más Info</span>
+										<span className="text-warning ">Más Info</span>
 									</Link>
 								</button>
 							</div>
@@ -42,13 +50,21 @@ export const Card = props => {
 					<span className="sr-only">Loading...</span>
 				</div>
 			)}
-			<div className="row">
-				<div className="col mx-auto">
-					<button className="btn btn-warning" onClick={() => actions.ten_more(props.type_info)}>
-						10 More {props.type_info}
-					</button>
+			{store[props.type_info].length > 0 ? (
+				<div className="row align-items-center">
+					{store[props.type_info].next != null ? (
+						<div className="col">
+							<button className="btn btn-warning more" onClick={() => actions.ten_more(props.type_info)}>
+								Next 10 {props.type_info}
+							</button>
+						</div>
+					) : (
+						console.log(store[props.type_info].next)
+					)}
 				</div>
-			</div>
+			) : (
+				""
+			)}
 		</div>
 	);
 };
