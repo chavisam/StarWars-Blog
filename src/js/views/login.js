@@ -6,7 +6,7 @@ export const Login = () => {
 	const { actions, store } = useContext(Context);
 	return (
 		<div className="mx-auto text-center">
-			<h1>Welcome to Our Star Wars Blog</h1>
+			<h1 className="text-warning">Welcome to Our Star Wars Blog</h1>
 
 			{store.isLoggedIn ? (
 				<Redirect to={"/home"} />

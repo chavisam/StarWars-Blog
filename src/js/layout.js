@@ -4,7 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
 
-import { Single } from "./views/single";
+import { Info } from "./views/info";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -30,8 +30,8 @@ const Layout = () => {
 							<Home />
 						</Route>
 
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/info/:uid">
+							<Info />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
