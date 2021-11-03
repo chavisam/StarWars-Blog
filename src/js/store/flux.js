@@ -6,9 +6,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//we create the variable for favorites
 			favorites: 0,
 			//we create variable Characters
-			nextPeople: "",
-			nextPlanets: "",
-			nextStarships: "",
+			nextpeople: null,
+			nextplanets: null,
+			nextstarships: null,
+			previouspeople: null,
+			previousplanets: null,
+			previousstarships: null,
 
 			people: [],
 			planets: [],
@@ -39,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//function to see 10 more
 			ten_more: data => {
 				const store = getStore();
-				//alert(store[`next${data}`]);
+
 				let uri = store[`next${data}`];
 
 				fetch(uri)
@@ -51,6 +54,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(resp.results);
 						setStore({ [data]: resp.results });
 						setStore({ ["next" + data]: resp.next });
+						setStore({ ["previous" + data]: resp.previous });
+					})
+					.catch(error => console.error(error));
+			},
+
+			//function to see 10 PREVIOUS
+			ten_previous: data => {
+				const store = getStore();
+
+				let uri = store[`previous${data}`];
+
+				fetch(uri)
+					.then(response => {
+						console.log(response.status);
+						return response.json();
+					})
+					.then(resp => {
+						console.log(resp.results);
+						setStore({ [data]: resp.results });
+						setStore({ ["next" + data]: resp.next });
+						setStore({ ["previous" + data]: resp.previous });
 					})
 					.catch(error => console.error(error));
 			},

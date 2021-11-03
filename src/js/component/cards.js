@@ -50,21 +50,6 @@ export const Card = props => {
 					<span className="sr-only">Loading...</span>
 				</div>
 			)}
-			{store[props.type_info].length > 0 ? (
-				<div className="row align-items-center">
-					{store[props.type_info].next != null ? (
-						<div className="col">
-							<button className="btn btn-warning more" onClick={() => actions.ten_more(props.type_info)}>
-								Next 10 {props.type_info}
-							</button>
-						</div>
-					) : (
-						console.log(store[props.type_info].next)
-					)}
-				</div>
-			) : (
-				""
-			)}
 		</div>
 	);
 };
