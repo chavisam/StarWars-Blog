@@ -63,8 +63,8 @@ export const Info = () => {
 										pref.properties.mass
 											? "characters"
 											: pref.properties.diameter
-												? "planets"
-												: "starships"
+											? "planets"
+											: "starships"
 									}/${pref.uid}.jpg`}
 									onError={e => {
 										e.target.src = no_dispo;
