@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//we create the variable to login
 			isLoggedIn: false,
 			//we create the variable for favorites
-			favorites: 0,
+			favorites: [],
 			//we create variable Characters
 			characters: {}
 		},
@@ -28,7 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.error(error));
 			},
-			addFavorite: item => {
+			addToFavorite: item => {
 				const store = getStore();
 				setStore({ favorites: [...store.favorites, item] });
 			},
