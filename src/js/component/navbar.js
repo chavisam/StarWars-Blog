@@ -5,6 +5,9 @@ import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const { actions, store } = useContext(Context);
+	const removeFavorite = index => {
+		actions.removeFavorite(index);
+	};
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/home">
@@ -28,6 +31,14 @@ export const Navbar = () => {
 					<Link to="/demo">
 						<button className="btn btn-primary ml-3">Favorites</button>
 					</Link>
+					<div className="favorites">
+						{store.favorites.map((favorite, index) => (
+							<div key={index}>
+								<span>{favorite.name}</span>
+								<span onClick={() => removeFavorite(index)}>delete </span>
+							</div>
+						))}
+					</div>
 				</span>
 			</div>
 		</nav>

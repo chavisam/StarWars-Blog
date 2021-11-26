@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//we create the variable to login
 			isLoggedIn: false,
 			//we create the variable for favorites
-			favorites: 0,
+			favorites: [],
 			//we create variable Characters
 			nextpeople: null,
 			nextplanets: null,
@@ -90,6 +90,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ characterData: resp });
 					})
 					.catch(error => console.error(error));
+			},
+			addToFavorite: item => {
+				const store = getStore();
+				setStore({ favorites: [...store.favorites, item] });
+			},
+			removeFavorite: index => {
+				const store = getStore();
+				const newFavs = [...store.favorites];
+				newFavs.splice(index, 1);
+				setStore({ favorites: newFavs });
 			}
 		}
 	};
