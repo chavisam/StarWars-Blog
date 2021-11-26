@@ -37,7 +37,7 @@ export const Card = () => {
 									Más info
 								</a>
 								{isExistFavorite(item) ? (
-									<button>
+									<button className="bg-success">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											width="16"
